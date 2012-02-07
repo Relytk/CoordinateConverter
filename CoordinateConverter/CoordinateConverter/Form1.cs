@@ -18,58 +18,76 @@ namespace CoordinateConverter
         Calculations calculator = new Calculations(); //making the object calculator to call the functions
         public Form1()
         {
-            
             InitializeComponent();
+
+			coordList.SelectedIndex = 0;
         }
 
-        private void convert_Click(object sender, EventArgs e)  //when the convert button is clicked
-        {
-            double latitude = Convert.ToDouble(latitudeText.Text);
-            double longitude = Convert.ToDouble(longitudeText.Text);  //it will grab the numbers in the text boxes
-            
-            latitude = latitude * (Math.PI / 180);  //and converts them to radians and stores them in the variables latitude and longitude
-            longitude = longitude * (Math.PI /180);
-            
-            if (coordList.Text == "Ecliptic") //if you input Ecliptic degrees it will calculate galactic and equatorial
-            {
-                
+		private void ConvertSetValues()
+		{
+			double latitude = Convert.ToDouble (latitudeText.Text);
+			double longitude = Convert.ToDouble (longitudeText.Text);  //it will grab the numbers in the text boxes
 
-                calculator.eclipticToEquatorial(longitude, latitude);                       //equatorial
-                calculator.equatorialToGalactic(calculator.getEquatorialLongitude() * (Math.PI / 180), calculator.getEquatorialLatitude() * (Math.PI / 180)); //galactic
+			latitude = latitude * (Math.PI / 180);  //and converts them to radians and stores them in the variables latitude and longitude
+			longitude = longitude * (Math.PI / 180);
 
-                latitude = latitude * (180 / Math.PI);
-                longitude = longitude * (180 / Math.PI);
+			if (coordList.Text == "Ecliptic") //if you input Ecliptic degrees it will calculate galactic and equatorial
+			{
 
-                equatorialLabel.Text = ("(" + calculator.getEquatorialLongitude() + ", " + calculator.getEquatorialLatitude() +")"); //displays the equatorial degrees
-                eclipticLabel.Text = ("(" + longitude + ", " + latitude + ")");                                                            //displays ecliptic
-                galacticLabel.Text = ("(" + calculator.getGalacticLongitude() + ", " + calculator.getGalacticLatitude() + ")");   //and galactic
-            }
 
-            if (coordList.Text == "Equatorial") //if you put equatorial it will calculate galactic and ecliptic
-            {
+				calculator.eclipticToEquatorial (longitude, latitude);                       //equatorial
+				calculator.equatorialToGalactic (calculator.getEquatorialLongitude () * (Math.PI / 180), calculator.getEquatorialLatitude () * (Math.PI / 180)); //galactic
 
-                calculator.equatorialToEcliptic(longitude, latitude); //calculates
-                calculator.equatorialToGalactic(longitude, latitude);
+				latitude = latitude * (180 / Math.PI);
+				longitude = longitude * (180 / Math.PI);
 
-                latitude = latitude * (180 / Math.PI); //to degrees
-                longitude = longitude * (180 / Math.PI);
-                eclipticLabel.Text = ("(" + calculator.getEclipticLongitude() + ", " + calculator.getEclipticLatitude() +")");
-                equatorialLabel.Text = ("(" + longitude + ", " + latitude + ")");
-                galacticLabel.Text = ("(" + calculator.getGalacticLongitude() + ", " + calculator.getGalacticLatitude() + ")");
-            }
+				equatorialLabel.Text = ("(" + calculator.getEquatorialLongitude () + ", " + calculator.getEquatorialLatitude () + ")"); //displays the equatorial degrees
+				eclipticLabel.Text = ("(" + longitude + ", " + latitude + ")");                                                            //displays ecliptic
+				galacticLabel.Text = ("(" + calculator.getGalacticLongitude () + ", " + calculator.getGalacticLatitude () + ")");   //and galactic
+			}
 
-            if (coordList.Text == "Galactic") // calculates ecliptic and equatorial if you put in galactic
-            {
-                calculator.galacticToEquatorial(longitude, latitude);
-                calculator.equatorialToEcliptic(calculator.getEquatorialLongitude() * (Math.PI / 180), calculator.getEquatorialLatitude()* (Math.PI / 180));
+			if (coordList.Text == "Equatorial") //if you put equatorial it will calculate galactic and ecliptic
+			{
 
-                latitude = latitude * (180 / Math.PI);
-                longitude = longitude * (180 / Math.PI);
+				calculator.equatorialToEcliptic (longitude, latitude); //calculates
+				calculator.equatorialToGalactic (longitude, latitude);
 
-                eclipticLabel.Text = ("(" + calculator.getEclipticLongitude() + ", " + calculator.getEclipticLatitude() + ")");
-                galacticLabel.Text = ("(" + longitude + ", " + latitude + ")");
-                equatorialLabel.Text = ("(" + calculator.getEquatorialLongitude() + ", " + calculator.getEquatorialLatitude() + ")");
-            }
-        }
+				latitude = latitude * (180 / Math.PI); //to degrees
+				longitude = longitude * (180 / Math.PI);
+				eclipticLabel.Text = ("(" + calculator.getEclipticLongitude () + ", " + calculator.getEclipticLatitude () + ")");
+				equatorialLabel.Text = ("(" + longitude + ", " + latitude + ")");
+				galacticLabel.Text = ("(" + calculator.getGalacticLongitude () + ", " + calculator.getGalacticLatitude () + ")");
+			}
+
+			if (coordList.Text == "Galactic") // calculates ecliptic and equatorial if you put in galactic
+			{
+				calculator.galacticToEquatorial (longitude, latitude);
+				calculator.equatorialToEcliptic (calculator.getEquatorialLongitude () * (Math.PI / 180), calculator.getEquatorialLatitude () * (Math.PI / 180));
+
+				latitude = latitude * (180 / Math.PI);
+				longitude = longitude * (180 / Math.PI);
+
+				eclipticLabel.Text = ("(" + calculator.getEclipticLongitude () + ", " + calculator.getEclipticLatitude () + ")");
+				galacticLabel.Text = ("(" + longitude + ", " + latitude + ")");
+				equatorialLabel.Text = ("(" + calculator.getEquatorialLongitude () + ", " + calculator.getEquatorialLatitude () + ")");
+			}
+		}
+
+
+		private bool ValidateValues()
+		{
+			double result;;
+
+			return double.TryParse (latitudeText.Text, out result)
+				&& double.TryParse (longitudeText.Text, out result);
+		}
+
+    	private void value_TextChanged (object sender, EventArgs e)
+		{
+			if (!ValidateValues ())
+				return;
+
+			ConvertSetValues();
+		}
     }
 }
