@@ -154,6 +154,7 @@
 			this.coordList.Name = "coordList";
 			this.coordList.Size = new System.Drawing.Size(304, 33);
 			this.coordList.TabIndex = 12;
+			this.coordList.SelectedIndexChanged += new System.EventHandler(this.coordList_SelectedIndexChanged);
 			// 
 			// label6
 			// 

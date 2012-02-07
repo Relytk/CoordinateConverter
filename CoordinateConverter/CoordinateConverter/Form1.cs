@@ -15,7 +15,9 @@ namespace CoordinateConverter
 {
     public partial class Form1 : Form
     {
-        Calculations calculator = new Calculations(); //making the object calculator to call the functions
+        private Calculations calculator = new Calculations(); //making the object calculator to call the functions
+		private string failureMessage = "Cannot display value.";
+
         public Form1()
         {
             InitializeComponent();
@@ -73,21 +75,47 @@ namespace CoordinateConverter
 			}
 		}
 
-
 		private bool ValidateValues()
 		{
-			double result;;
+			double result;
 
 			return double.TryParse (latitudeText.Text, out result)
 				&& double.TryParse (longitudeText.Text, out result);
 		}
 
+		private void InvalidateDisplay()
+		{
+			try
+			{
+				if (!ValidateValues ())
+				{
+					SetCantDisplayValues ();
+					return;
+				}
+
+				ConvertSetValues ();
+			}
+			catch
+			{
+				SetCantDisplayValues();
+			}
+		}
+
+		private void SetCantDisplayValues()
+		{
+			eclipticLabel.Text = failureMessage;
+			galacticLabel.Text = failureMessage;
+			equatorialLabel.Text = failureMessage;
+		}
+
     	private void value_TextChanged (object sender, EventArgs e)
 		{
-			if (!ValidateValues ())
-				return;
+			InvalidateDisplay();
+		}
 
-			ConvertSetValues();
+		private void coordList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			InvalidateDisplay();
 		}
     }
 }
