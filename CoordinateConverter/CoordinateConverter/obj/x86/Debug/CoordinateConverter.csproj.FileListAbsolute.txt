@@ -1,0 +1,13 @@
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\bin\Debug\CoordinateConverter.exe
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\bin\Debug\CoordinateConverter.pdb
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\CoordinateConverter.Form1.resources
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\CoordinateConverter.Properties.Resources.resources
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\CoordinateConverter.exe
+c:\users\tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\CoordinateConverter.pdb
+C:\Users\Tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\bin\Debug\CoordinateConverter.exe.manifest
+C:\Users\Tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\bin\Debug\CoordinateConverter.application
+C:\Users\Tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\CoordinateConverter.exe.manifest
+C:\Users\Tyler\documents\visual studio 2010\Projects\CoordinateConverter\CoordinateConverter\obj\x86\Debug\CoordinateConverter.application
